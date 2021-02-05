@@ -52,13 +52,19 @@ public class UsuarioController {
 
 	@PostMapping("/cadastrar")
 	public ResponseEntity<Usuario> Post(@RequestBody Usuario usuario) {
-		return ResponseEntity.status(HttpStatus.CREATED)
-				.body(usuarioService.CadastrarUsuario(usuario));
+		Optional<Usuario> user = usuarioService.CadastrarUsuario(usuario);
+		try {
+				return ResponseEntity.ok(user.get());
+		} catch (Exception e) {
+			return ResponseEntity.badRequest().build();
+		}
+		
 	}
 
-	@PutMapping
+	@PutMapping("/atualizar")
 	public ResponseEntity<Usuario> Put(@RequestBody Usuario usuario) {
-		return ResponseEntity.ok(repository.save(usuario));
+		Optional<Usuario> user = usuarioService.atualizarUsuario(usuario);
+		return ResponseEntity.ok(user.get());
 	}
 
 }
