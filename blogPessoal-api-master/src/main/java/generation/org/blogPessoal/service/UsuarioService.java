@@ -1,5 +1,6 @@
 package generation.org.blogPessoal.service;
 
+import java.lang.module.FindException;
 import java.nio.charset.Charset;
 import java.util.Optional;
 
@@ -32,8 +33,10 @@ public class UsuarioService {
 	}
 	
 	public Optional<Usuario> atualizarUsuario(Usuario usuario) {
-
-	
+		if (repository.findById(usuario.getId()).isEmpty()) 
+			return null;
+		if (repository.findByUsuario(usuario.getUsuario()).isPresent())
+			return null;
 
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
