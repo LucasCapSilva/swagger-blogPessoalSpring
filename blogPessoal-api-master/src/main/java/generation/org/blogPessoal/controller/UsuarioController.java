@@ -44,11 +44,6 @@ public class UsuarioController {
 				.orElse(ResponseEntity.status(HttpStatus.UNAUTHORIZED).build());
 	}
 
-	@GetMapping("/{id}")
-	public ResponseEntity<Usuario> GetById(@PathVariable long id) {
-		return repository.findById(id).map(resp -> ResponseEntity.ok(resp)).orElse(ResponseEntity.notFound().build());
-	}
-
 
 	@PostMapping("/cadastrar")
 	public ResponseEntity<Usuario> Post(@RequestBody Usuario usuario) {
@@ -61,10 +56,6 @@ public class UsuarioController {
 		
 	}
 
-	@PutMapping("/atualizar")
-	public ResponseEntity<Usuario> Put(@RequestBody Usuario usuario) {
-		Optional<Usuario> user = usuarioService.atualizarUsuario(usuario);
-		return ResponseEntity.ok(user.get());
-	}
+
 
 }

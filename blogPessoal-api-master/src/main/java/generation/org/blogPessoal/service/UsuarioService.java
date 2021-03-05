@@ -32,19 +32,6 @@ public class UsuarioService {
 		return Optional.of(repository.save(usuario));
 	}
 	
-	public Optional<Usuario> atualizarUsuario(Usuario usuario) {
-		if (repository.findById(usuario.getId()).isEmpty()) 
-			return null;
-		if (repository.findByUsuario(usuario.getUsuario()).isPresent())
-			return null;
-
-		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-
-		String senhaEncoder = encoder.encode(usuario.getSenha());
-		usuario.setSenha(senhaEncoder);
-
-		return Optional.of(repository.save(usuario));
-	}
 
 	public Optional<UsuarioLogin> Logar(Optional<UsuarioLogin> user) {
 
