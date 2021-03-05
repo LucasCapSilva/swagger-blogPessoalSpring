@@ -33,11 +33,6 @@ public class UsuarioController {
 	@Autowired
 	private UsuarioService usuarioService;
 
-	@GetMapping
-	public ResponseEntity<List<Usuario>> GetAll() {
-		return ResponseEntity.ok(repository.findAll());
-	}
-
 	@PostMapping("/logar")
 	public ResponseEntity<UsuarioLogin> Autentication(@RequestBody Optional<UsuarioLogin> user) {
 		return usuarioService.Logar(user).map(resp -> ResponseEntity.ok(resp))

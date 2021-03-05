@@ -10,7 +10,6 @@ public class UsuarioLogin {
 	
 	private String token;
 	
-	private boolean vendedor;
 
 	
 	public String getNome() {
@@ -33,13 +32,6 @@ public class UsuarioLogin {
 		this.token = token;
 	}
 
-	public boolean isVendedor() {
-		return vendedor;
-	}	
-
-	public void setVendedor(boolean vendedor) {
-		this.vendedor = vendedor;
-	}
 
 	public void setUsuario(String usuario) {
 		this.usuario = usuario;
